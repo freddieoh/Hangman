@@ -10,7 +10,7 @@ import UIKit
 
 class HangmanViewController: UIViewController {
   
-  let linkedInWords = [String]()
+  var linkedInWords = [String]()
   
   @IBOutlet weak var letterTextField: UITextField!
   @IBOutlet weak var incorrectGuessesLabel: UILabel!
@@ -28,18 +28,16 @@ class HangmanViewController: UIViewController {
       } else {
         let dataString = String(data: data!, encoding: .utf8)
         
+        self.linkedInWords = (dataString?.components(separatedBy: CharacterSet.newlines))!
+        
         print(dataString!)
       }
       
-    } .resume()
-
-    }
-  
-  
+      } .resume()
+    
+  }
   
   @IBAction func guessButtonPressed(_ sender: Any) {
     
-
-  
-}
+  }
 }
