@@ -10,9 +10,7 @@ import UIKit
 
 class HangmanViewController: UIViewController {
   
-  let hangmanWord: String = ""
-  let word: String = "Kappa"
-  
+  let linkedInWords = [String]()
   
   @IBOutlet weak var letterTextField: UITextField!
   @IBOutlet weak var incorrectGuessesLabel: UILabel!
@@ -21,22 +19,27 @@ class HangmanViewController: UIViewController {
   
   override func viewDidLoad() {
         super.viewDidLoad()
+    
+    let url:String = "http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words"
+    let urlRequest = URL(string: url)
+    URLSession.shared.dataTask(with: urlRequest!) { (data, response, error) in
+      if error != nil {
+        print(error.debugDescription)
+      } else {
+        let dataString = String(data: data!, encoding: .utf8)
         
+        print(dataString!)
+      }
+      
+    } .resume()
+
     }
   
-  func checkLetter() {
-    
-    if (hangmanWord.range(of: word) != nil) {
-      print("Correct letter")
-    } else {
-      print("Guesses Remaining -1")
-    }
-  }
   
   
   @IBAction func guessButtonPressed(_ sender: Any) {
     
-    checkLetter()
-  }
+
   
+}
 }
