@@ -42,21 +42,18 @@ class HangmanViewController: UIViewController {
       } .resume()
     }
   
-  func updateGuesses() {
+  func updateNumberOfGuesses() {
     if numberOfGuesses < 6 || guessesRemaining > 5 {
       numberOfGuesses += 1
       guessesRemaining -= 1
     }
   }
   
-  func updatedGuessesLabel() {
-    if counter == answer.characters.count {
-      counter += 1
-      updateGuesses()
+  func updateGuessesLabels() {
+      updateNumberOfGuesses()
       self.guessesRemainingLabel.text = "\(guessesRemaining)"
       self.incorrectGuessesLabel.text = "\(numberOfGuesses)"
       print("Match not found")
-    }
   }
   
   func checkUserLetter() {
@@ -64,8 +61,7 @@ class HangmanViewController: UIViewController {
     if answer.contains(userGuess!) {
       print("Match Found")
     } else {
-      updateGuesses()
-      updatedGuessesLabel()
+      updateGuessesLabels()
     }
   }
   
