@@ -13,7 +13,7 @@ class HangmanViewController: UIViewController {
   var linkedInWords = [String]()
   var numberOfGuesses: Int = 0
   var guessesRemaining: Int = 6
-  
+  var counter = 0
   var answer = "Test"
   
   
@@ -23,18 +23,12 @@ class HangmanViewController: UIViewController {
   
   
   override func viewDidLoad() {
-        super.viewDidLoad()
-    
-      getWordsFromApi()
+    super.viewDidLoad()
+
+    getWordsFromApi()
+  
   }
   
-  func updateGuesses() {
-    if numberOfGuesses < 6 || guessesRemaining > 5 {
-      numberOfGuesses += 1
-      guessesRemaining -= 1
-    }
-  }
-
   func getWordsFromApi() {
     let url:String = "http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words"
     let urlRequest = URL(string: url)
@@ -46,33 +40,36 @@ class HangmanViewController: UIViewController {
         self.linkedInWords = (dataString?.components(separatedBy: CharacterSet.newlines))!
         }
       } .resume()
+    }
+  
+  func updateGuesses() {
+    if numberOfGuesses < 6 || guessesRemaining > 5 {
+      numberOfGuesses += 1
+      guessesRemaining -= 1
+    }
+  }
+  
+  func updatedGuessesLabel() {
+    if counter == answer.characters.count {
+      counter += 1
+      updateGuesses()
+      self.guessesRemainingLabel.text = "\(guessesRemaining)"
+      self.incorrectGuessesLabel.text = "\(numberOfGuesses)"
+      print("Match not found")
+    }
+  }
+  
+  func checkUserLetter() {
+    let userGuess = self.letterTextField.text
+    if answer.contains(userGuess!) {
+      print("Match Found")
+    } else {
+      updateGuesses()
+      updatedGuessesLabel()
+    }
   }
   
   @IBAction func guessButtonPressed(_ sender: Any) {
-    
-    let userGuess = self.letterTextField?.text
-   // let searchChar: Character = "C"
-    
-    var counter = 0
-    
-    for char in answer.characters {
-      
-      counter += 1
-      
-      let characterToString = "\(char)"
-
-      if userGuess! == characterToString {
-          print("Match found")
-        } else {
-        if counter == answer.characters.count {
-          
-          updateGuesses()
-          self.guessesRemainingLabel.text = "\(guessesRemaining)"
-          self.incorrectGuessesLabel.text = "\(numberOfGuesses)"
-          print("Match not found")
-        }
-        }
-      }
-    }
+    checkUserLetter()
   }
-
+}
