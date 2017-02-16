@@ -13,8 +13,7 @@ class HangmanViewController: UIViewController {
   var linkedInWords = [String]()
   var numberOfGuesses: Int = 0
   var guessesRemaining: Int = 6
-  var correctHangmanWord = "test"
-
+  var correctHangmanWord = " "
 
   
   @IBOutlet weak var letterTextField: UITextField!
@@ -37,9 +36,20 @@ class HangmanViewController: UIViewController {
       } else {
         let dataString = String(data: data!, encoding: .utf8)
         self.linkedInWords = (dataString?.components(separatedBy: CharacterSet.newlines))!
+        self.correctHangmanWord = self.getRandomWord()
+        self.displayDashesForWord()
         }
       } .resume()
     }
+  
+  func displayDashesForWord() {
+    var dashes = "-"
+    for _ in 0..<self.correctHangmanWord.characters.count {
+      dashes += "-"
+   
+    }
+    self.hangmanWordLabel.text = dashes
+  }
   
   func updateNumberOfGuesses() {
     if numberOfGuesses < 6 || guessesRemaining > 1 {
@@ -75,7 +85,6 @@ class HangmanViewController: UIViewController {
           extraArray.insert(userGuess!.characters.first!, at: char)
         }
       }
-
       //turn extraArray into a string and put into the guessedAnswerLabel
       let newString = extraArray.map({"\($0)"}).joined(separator: "")
       self.hangmanWordLabel.text = newString
@@ -84,20 +93,25 @@ class HangmanViewController: UIViewController {
     }
   }
   
-  
-    func getRandomWord() -> String {
-    
+  func getRandomWord() -> String {
     let randomNumber = generateRandomNumber()
     return self.linkedInWords[randomNumber]
-
   }
   
-  private func generateRandomNumber() -> Int {
+  func generateRandomNumber() -> Int {
     return Int(arc4random_uniform(UInt32(self.linkedInWords.count)))
+  }
+  
+  func revealHangmanWord() {
+    self.hangmanWordLabel.text = "\(self.correctHangmanWord)"
   }
   
   @IBAction func guessButtonPressed(_ sender: Any) {
     checkUserLetter()
-    print(getRandomWord())
+  }
+  
+  @IBAction func revealButtonPressed() {
+    revealHangmanWord()
+    
   }
 }
