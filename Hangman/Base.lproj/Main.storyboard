@@ -36,14 +36,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Guess a letter!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qbI-rU-nnq">
-                                <rect key="frame" x="94" y="88" width="114" height="30"/>
+                                <rect key="frame" x="94" y="88" width="108" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="--------" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aht-Lp-ypk">
-                                <rect key="frame" x="107" y="227" width="80" height="21"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aht-Lp-ypk">
+                                <rect key="frame" x="107" y="227" width="139" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -90,6 +90,7 @@
                     </view>
                     <connections>
                         <outlet property="guessesRemainingLabel" destination="OU6-sD-Oky" id="GQU-i8-EOS"/>
+                        <outlet property="hangmanWordLabel" destination="Aht-Lp-ypk" id="Rrz-pp-4WR"/>
                         <outlet property="incorrectGuessesLabel" destination="2RX-Rg-hzV" id="52T-IM-2ze"/>
                         <outlet property="letterTextField" destination="qbI-rU-nnq" id="O0f-F4-KhZ"/>
                     </connections>
