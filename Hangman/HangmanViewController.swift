@@ -56,10 +56,6 @@ class HangmanViewController: UIViewController {
     return dashes
   }
   
-  func testLabel() {
-    self.hangmanWordLabel.text = self.displayDashesForWord()
-  }
-  
   func updateNumberOfGuesses() {
     if numberOfGuesses < 6 || guessesRemaining > 1 {
       numberOfGuesses += 1
@@ -136,8 +132,18 @@ class HangmanViewController: UIViewController {
     userLost()
   }
   
+  func playGame() {
+  self.correctHangmanWord = self.getRandomWord()
+  self.hangmanWordLabel.text = self.displayDashesForWord()
+  }
+  
+  @IBAction func playButtonPressed(_ sender: Any) {
+    playGame()
+  }
+
+  
   @IBAction func getNewWordButtonPressed(_ sender: Any) {
-    self.hangmanWordLabel.text = self.getRandomWord()
+    playGame()
     userWonLabel.isHidden = true
     userLostLabel.isHidden = true
   }
@@ -148,8 +154,10 @@ class HangmanViewController: UIViewController {
   
   @IBAction func revealButtonPressed() {
     revealHangmanWord()
+    
   }
 }
+
 
 extension HangmanViewController: UITextFieldDelegate {
   
