@@ -15,5 +15,4 @@ class Hangman {
   var correctWord = ""
   var wrongLetters = ""
   
-  
 }

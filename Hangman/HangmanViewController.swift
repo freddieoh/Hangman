@@ -13,8 +13,9 @@ class HangmanViewController: UIViewController {
   var linkedInWords = [String]()
   var numberOfGuesses: Int = 0
   var guessesRemaining: Int = 6
-  var correctHangmanWord = " "
-
+  var correctHangmanWord = ""
+  let userGuessLength: Int = 1
+  
   
   @IBOutlet weak var letterTextField: UITextField!
   @IBOutlet weak var incorrectGuessesLabel: UILabel!
@@ -23,8 +24,10 @@ class HangmanViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    
     getWordsFromApi()
+    letterTextField.delegate = self
+    
   }
   
   func getWordsFromApi() {
@@ -37,18 +40,23 @@ class HangmanViewController: UIViewController {
         let dataString = String(data: data!, encoding: .utf8)
         self.linkedInWords = (dataString?.components(separatedBy: CharacterSet.newlines))!
         self.correctHangmanWord = self.getRandomWord()
-        self.displayDashesForWord()
-        }
+        self.hangmanWordLabel.text = "\(self.displayDashesForWord())"
+        
+      }
       } .resume()
-    }
+  }
   
-  func displayDashesForWord() {
-    var dashes = "-"
+  func displayDashesForWord() -> String {
+    var dashes = ""
     for _ in 0..<self.correctHangmanWord.characters.count {
       dashes += "-"
-   
     }
-    self.hangmanWordLabel.text = dashes
+    return dashes
+  }
+  
+  
+  func testLabel() {
+    self.hangmanWordLabel.text = self.displayDashesForWord()
   }
   
   func updateNumberOfGuesses() {
@@ -59,11 +67,20 @@ class HangmanViewController: UIViewController {
   }
   
   func updateGuessesLabels() {
-      updateNumberOfGuesses()
-      self.guessesRemainingLabel.text = "\(guessesRemaining)"
-      self.incorrectGuessesLabel.text = "\(numberOfGuesses)"
-      print("Match not found")
+    updateNumberOfGuesses()
+    self.guessesRemainingLabel.text = "\(guessesRemaining)"
+    self.incorrectGuessesLabel.text = "\(numberOfGuesses)"
+    print("Match not found")
+    
+    // Image of Hangman body part appears
+    
   }
+  
+//  func textField(_ letterTextField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//    guard let text = letterTextField.text else { return true }
+//    let newLength = text.characters.count + string.characters.count - range.length
+//    return newLength <= userGuessLength
+//  }
   
   func checkUserLetter() {
     let userGuess = self.letterTextField.text
@@ -105,13 +122,31 @@ class HangmanViewController: UIViewController {
   func revealHangmanWord() {
     self.hangmanWordLabel.text = "\(self.correctHangmanWord)"
   }
-  
+
   @IBAction func guessButtonPressed(_ sender: Any) {
     checkUserLetter()
   }
-  
+
   @IBAction func revealButtonPressed() {
     revealHangmanWord()
     
   }
+
+}
+
+extension HangmanViewController: UITextFieldDelegate {
+
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    guard let text = letterTextField.text else { return true }
+    let newLength = text.characters.count + string.characters.count - range.length
+    return newLength <= userGuessLength
+  }
+  
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    print("User hit return")
+    return true
+  }
+  
+  
 }
