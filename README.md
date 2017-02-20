@@ -9,8 +9,8 @@ From paper and pencil, to a mobile application. Hangman is a classic guessing ga
 * Download Xcode 8.2.1
 * Open Hangman folder
 * Open Hangman.xcodeproj
-* Command + B to build the application with no errors
-* Command + R to run the application
+* `Command + B` to build the application with no errors
+* `Command + R` to run the application
 
 
 # Play Hangman
