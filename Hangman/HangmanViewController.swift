@@ -11,7 +11,7 @@ import UIKit
 class HangmanViewController: UIViewController {
   
   var linkedInWords = [String]()
-  var numberOfGuesses: Int = 0
+  var numberOfIncorrectGuesses: Int = 0
   var guessesRemaining: Int = 6
   var correctHangmanWord = ""
   let userGuessLength: Int = 1
@@ -43,7 +43,7 @@ class HangmanViewController: UIViewController {
         let dataString = String(data: data!, encoding: .utf8)
         self.linkedInWords = (dataString?.components(separatedBy: CharacterSet.newlines))!
         self.correctHangmanWord = self.getRandomWord()
-        self.hangmanWordLabel.text = "\(self.displayDashesForWord())"
+        self.hangmanWordLabel.text = self.displayDashesForWord()
       }
       } .resume()
   }
@@ -57,25 +57,31 @@ class HangmanViewController: UIViewController {
   }
   
   func updateNumberOfGuesses() {
-    if numberOfGuesses < 6 || guessesRemaining > 1 {
-      numberOfGuesses += 1
+    if numberOfIncorrectGuesses < 6 || guessesRemaining > 1 {
+      numberOfIncorrectGuesses += 1
       guessesRemaining -= 1
     }
     userUsedAllGuesses()
   }
   
+  func resetNumberOfGuesses() {
+    numberOfIncorrectGuesses = -1
+    guessesRemaining = 7
+    updateGuessesLabels()
+  }
+  
   func updateGuessesLabels() {
     updateNumberOfGuesses()
     self.guessesRemainingLabel.text = "\(guessesRemaining)"
-    self.incorrectGuessesLabel.text = "\(numberOfGuesses)"
+    self.incorrectGuessesLabel.text = "\(numberOfIncorrectGuesses)"
     print("Match not found")
     
     // Image of Hangman body part appears
   }
   
   func userUsedAllGuesses() {
-    if numberOfGuesses == 6, guessesRemaining == 0 {
-      userLost()
+    if numberOfIncorrectGuesses == 6, guessesRemaining == 0 {
+      revealHangmanWord()
     }
   }
   
@@ -88,11 +94,11 @@ class HangmanViewController: UIViewController {
     if correctHangmanWord.contains(userGuess!) {
       print("Match Found")
       
-      // Turn answer into an array of characters
+    // Turn answer into an array of characters
       let answerArray = Array(correctHangmanWord.characters)
       var extraArray = Array(exampleDisplayAnswer!.characters)
       
-      // run the for loop that checks their character guess against each character in your answer, and saves the index of their guess into the correct letters array
+    // run the for loop that checks their character guess against each character in your answer, and saves the index of their guess into the correct letters array
       for char in 0...answerArray.count-1 {
         let newCharacter = String(answerArray[char])
         if userGuess == newCharacter {
@@ -133,17 +139,19 @@ class HangmanViewController: UIViewController {
   }
   
   func playGame() {
-  self.correctHangmanWord = self.getRandomWord()
-  self.hangmanWordLabel.text = self.displayDashesForWord()
+    self.correctHangmanWord = self.getRandomWord()
+    self.hangmanWordLabel.text = self.displayDashesForWord()
   }
+  
   
   @IBAction func playButtonPressed(_ sender: Any) {
-    playGame()
+   // playGame()
   }
-
   
   @IBAction func getNewWordButtonPressed(_ sender: Any) {
-    playGame()
+    self.correctHangmanWord = self.getRandomWord()
+    self.hangmanWordLabel.text = self.displayDashesForWord()
+    resetNumberOfGuesses()
     userWonLabel.isHidden = true
     userLostLabel.isHidden = true
   }
@@ -154,11 +162,11 @@ class HangmanViewController: UIViewController {
   
   @IBAction func revealButtonPressed() {
     revealHangmanWord()
-    
   }
 }
 
 
+// MARK: UITextFieldDelegate
 extension HangmanViewController: UITextFieldDelegate {
   
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
