@@ -160,7 +160,6 @@ class HangmanViewController: UIViewController {
   }
 }
 
-
 // MARK: UITextFieldDelegate
 extension HangmanViewController: UITextFieldDelegate {
   
