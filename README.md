@@ -1,6 +1,9 @@
 # Hangman
+From paper and pencil, to a mobile application. Hangman is a classic guessing game where the computer generates a word from LinkedIn's Word Dictionary API. The word is concealed, and the user has 6 guesses to guess the correct word. If the user guesses the correct letters in the secret word, the user wins. If the user does not guess the correct letter in 6 guesses or less, the user loses. Are you ready for the challenge?
 
-#Technologies Used
+#Technologies Required
+* Xcode 8.2.1 requires a Mac running macOS 10.11.5 or later.
+* Swift 3
 
 
 
