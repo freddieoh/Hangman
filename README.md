@@ -5,12 +5,15 @@ From paper and pencil, to a mobile application. Hangman is a classic guessing ga
 * Xcode 8.2.1 requires a Mac running macOS 10.11.5 or later.
 * Swift 3
 
-# Play Hangman
+# Getting Started
 * Download Xcode 8.2.1
 * Open Hangman folder
 * Open Hangman.xcodeproj
 * Command + B to build the application with no errors
 * Command + R to run the application
+
+
+# Play Hangman
 * Type a letter in the textfield below "Guess A Letter!"
 * Press the Guess Button
 * Continue typing a letter in textfield until correct word is revealed
