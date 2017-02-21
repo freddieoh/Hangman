@@ -21,6 +21,9 @@ From paper and pencil, to a mobile application. Hangman is a classic guessing ga
 * If you can not guess the correct letters in the secret word, press **Reveal World** button to get the secret word. But you will lose :pensive:
 * If you lose, press **Get New Word** button to play again! :grin:
 
+![linkedinhangman](https://cloud.githubusercontent.com/assets/20007144/23150498/7509e44e-f7b9-11e6-9ebd-1c2fb484ce2d.gif)
+
+
 
 
 
