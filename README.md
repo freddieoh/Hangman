@@ -18,7 +18,7 @@ From paper and pencil, to a mobile application. Hangman is a classic guessing ga
 * Press the **Guess** Button
 * Continue typing a letter in textfield until correct word is revealed
 * Remember you only have **6** guesses! :cold_sweat:
-* If you can not guess the correct letters in the secret word, press **Reveal World** to get the secret word. But you will lose :pensive:
+* If you can not guess the correct letters in the secret word, press **Reveal World** button to get the secret word. But you will lose :pensive:
 * If you lose, press **Get New Word** button to play again! :grin:
 
 
