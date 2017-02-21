@@ -14,11 +14,11 @@ From paper and pencil, to a mobile application. Hangman is a classic guessing ga
 
 
 # Play Hangman
-* Type a letter in the textfield below "Guess A Letter!"
-* Press the Guess Button
+* Type a letter in the textfield below **Guess A Letter!"**
+* Press the **Guess** Button
 * Continue typing a letter in textfield until correct word is revealed
 * Remember you only have 6 guesses! :cold_sweat:
-* If you lose, press "Get New Word" button to play again! :grin:
+* If you lose, press **Get New Word** button to play again! :grin:
 
 
 
