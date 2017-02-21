@@ -15,6 +15,7 @@ class HangmanViewController: UIViewController {
   var guessesRemaining: Int = 6
   var correctHangmanWord = ""
   let userGuessLength: Int = 1
+  var correctLetters = [String]()
   
   @IBOutlet weak var letterTextField: UITextField!
   @IBOutlet weak var incorrectGuessesLabel: UILabel!
@@ -85,13 +86,20 @@ class HangmanViewController: UIViewController {
     }
   }
   
+  func userWon() {
+    userWonLabel.isHidden = false
+  }
+  
   func checkUserLetter() {
-    let userGuess = self.letterTextField.text
-    var correctLetters = [Int]()
-    
+    var userGuess = self.letterTextField.text
+    let userCorrectLetters = correctLetters
+    print(userCorrectLetters)
+    print(correctHangmanWord)
+
     // Put the string from guessedAnswerLabel.text
     let exampleDisplayAnswer = self.hangmanWordLabel.text
     if correctHangmanWord.contains(userGuess!) {
+      correctLetters.append(userGuess!)
       print("Match Found")
       
     // Turn answer into an array of characters
@@ -102,24 +110,23 @@ class HangmanViewController: UIViewController {
       for char in 0...answerArray.count-1 {
         let newCharacter = String(answerArray[char])
         if userGuess == newCharacter {
-          correctLetters.append(char)
           extraArray.remove(at: char)
           extraArray.insert(userGuess!.characters.first!, at: char)
         }
       }
-     
-      // Turns extraArray into a string and put into guessedAnswerLabel
+    // Turns extraArray into a string and put into guessedAnswerLabel
       let newString = extraArray.map({"\($0)"}).joined(separator: "")
-      self.hangmanWordLabel.text = newString
-    } else {
+        self.hangmanWordLabel.text = newString
+      } else {
       updateGuessesLabels()
+      }
+    let correctLettersArray = userCorrectLetters.joined(separator: "")
+    print(correctLettersArray)
+    if correctLettersArray == "\(correctHangmanWord.characters)" {
+        userWon()
+      }
     }
-  }
-  
-  func userWon() {
-    userWonLabel.isHidden = false
-  }
-  
+
   func userLost() {
     userLostLabel.isHidden = false
   }
