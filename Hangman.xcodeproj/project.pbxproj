@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1F47AA331E52AEEE0005505C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47AA321E52AEEE0005505C /* AppDelegate.swift */; };
 		1F47AA381E52AEEE0005505C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F47AA361E52AEEE0005505C /* Main.storyboard */; };
-		1F47AA3A1E52AEEE0005505C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F47AA391E52AEEE0005505C /* Assets.xcassets */; };
 		1F47AA3D1E52AEEE0005505C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F47AA3B1E52AEEE0005505C /* LaunchScreen.storyboard */; };
 		1F47AA451E52AFDE0005505C /* HangmanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47AA441E52AFDE0005505C /* HangmanViewController.swift */; };
 		1F47AA471E52AFF10005505C /* Hangman.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47AA461E52AFF10005505C /* Hangman.swift */; };
@@ -19,7 +18,6 @@
 		1F47AA2F1E52AEEE0005505C /* Hangman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hangman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F47AA321E52AEEE0005505C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F47AA371E52AEEE0005505C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1F47AA391E52AEEE0005505C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F47AA3C1E52AEEE0005505C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F47AA3E1E52AEEE0005505C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F47AA441E52AFDE0005505C /* HangmanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HangmanViewController.swift; sourceTree = "<group>"; };
@@ -60,7 +58,6 @@
 				1F47AA461E52AFF10005505C /* Hangman.swift */,
 				1F47AA441E52AFDE0005505C /* HangmanViewController.swift */,
 				1F47AA361E52AEEE0005505C /* Main.storyboard */,
-				1F47AA391E52AEEE0005505C /* Assets.xcassets */,
 				1F47AA3B1E52AEEE0005505C /* LaunchScreen.storyboard */,
 				1F47AA3E1E52AEEE0005505C /* Info.plist */,
 			);
@@ -128,7 +125,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F47AA3D1E52AEEE0005505C /* LaunchScreen.storyboard in Resources */,
-				1F47AA3A1E52AEEE0005505C /* Assets.xcassets in Resources */,
 				1F47AA381E52AEEE0005505C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +300,7 @@
 				1F47AA431E52AEEE0005505C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

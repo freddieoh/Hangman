@@ -16,6 +16,7 @@ class HangmanViewController: UIViewController {
   var correctHangmanWord = ""
   let userGuessLength: Int = 1
   var correctLetters = [String]()
+  var incorrectLetters = [String]()
   
   @IBOutlet weak var letterTextField: UITextField!
   @IBOutlet weak var incorrectGuessesLabel: UILabel!
@@ -23,6 +24,8 @@ class HangmanViewController: UIViewController {
   @IBOutlet weak var hangmanWordLabel: UILabel!
   @IBOutlet weak var userWonLabel: UILabel!
   @IBOutlet weak var userLostLabel: UILabel!
+  @IBOutlet weak var guessEntireWordTextField: UITextField!
+  @IBOutlet weak var incorrectGuessedLettersLabel: UILabel!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -119,6 +122,8 @@ class HangmanViewController: UIViewController {
         self.hangmanWordLabel.text = newString
       } else {
       updateGuessesLabels()
+      self.incorrectLetters.append(userGuess!)
+      self.incorrectGuessedLettersLabel.text = self.incorrectLetters.joined(separator: ",")
       }
     let correctLettersArray = userCorrectLetters.joined(separator: "")
     print(correctLettersArray)
@@ -132,17 +137,25 @@ class HangmanViewController: UIViewController {
   }
  
   func getRandomWord() -> String {
-    let randomNumber = generateRandomNumber()
+    let randomNumber = generateRandomNumber(number: UInt32(self.linkedInWords.count))
     return self.linkedInWords[randomNumber]
   }
   
-  func generateRandomNumber() -> Int {
-    return Int(arc4random_uniform(UInt32(self.linkedInWords.count)))
+  func generateRandomNumber(number: UInt32) -> Int {
+    return Int(arc4random_uniform(number))
   }
   
   func revealHangmanWord() {
     self.hangmanWordLabel.text = "\(self.correctHangmanWord)"
     userLost()
+  }
+  
+  func checkEntireGuessedWord() {
+    if guessEntireWordTextField.text == correctHangmanWord {
+      userWon()
+    } else {
+      userLost()
+    }
   }
   
   func playGame() {
@@ -156,6 +169,10 @@ class HangmanViewController: UIViewController {
     resetNumberOfGuesses()
     userWonLabel.isHidden = true
     userLostLabel.isHidden = true
+  }
+  
+  @IBAction func guessEntireWordButtonPressed(_ sender: Any) {
+    checkEntireGuessedWord()
   }
   
   @IBAction func guessButtonPressed(_ sender: Any) {
@@ -177,6 +194,7 @@ extension HangmanViewController: UITextFieldDelegate {
   }
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    checkUserLetter()
     print("User hit return")
     return true
   }
