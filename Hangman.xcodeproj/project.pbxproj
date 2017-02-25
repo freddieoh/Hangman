@@ -11,7 +11,6 @@
 		1F47AA381E52AEEE0005505C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F47AA361E52AEEE0005505C /* Main.storyboard */; };
 		1F47AA3D1E52AEEE0005505C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F47AA3B1E52AEEE0005505C /* LaunchScreen.storyboard */; };
 		1F47AA451E52AFDE0005505C /* HangmanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47AA441E52AFDE0005505C /* HangmanViewController.swift */; };
-		1F47AA471E52AFF10005505C /* Hangman.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47AA461E52AFF10005505C /* Hangman.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,7 +20,6 @@
 		1F47AA3C1E52AEEE0005505C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F47AA3E1E52AEEE0005505C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F47AA441E52AFDE0005505C /* HangmanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HangmanViewController.swift; sourceTree = "<group>"; };
-		1F47AA461E52AFF10005505C /* Hangman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hangman.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +53,6 @@
 			isa = PBXGroup;
 			children = (
 				1F47AA321E52AEEE0005505C /* AppDelegate.swift */,
-				1F47AA461E52AFF10005505C /* Hangman.swift */,
 				1F47AA441E52AFDE0005505C /* HangmanViewController.swift */,
 				1F47AA361E52AEEE0005505C /* Main.storyboard */,
 				1F47AA3B1E52AEEE0005505C /* LaunchScreen.storyboard */,
@@ -137,7 +134,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F47AA451E52AFDE0005505C /* HangmanViewController.swift in Sources */,
-				1F47AA471E52AFF10005505C /* Hangman.swift in Sources */,
 				1F47AA331E52AEEE0005505C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

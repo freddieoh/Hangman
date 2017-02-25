@@ -79,8 +79,6 @@ class HangmanViewController: UIViewController {
     self.guessesRemainingLabel.text = "\(guessesRemaining)"
     self.incorrectGuessesLabel.text = "\(numberOfIncorrectGuesses)"
     print("Match not found")
-    
-    // Image of Hangman body part appears
   }
   
   func userUsedAllGuesses() {
@@ -98,18 +96,18 @@ class HangmanViewController: UIViewController {
     let userCorrectLetters = correctLetters
     print(userCorrectLetters)
     print(correctHangmanWord)
-
+    
     // Put the string from guessedAnswerLabel.text
     let exampleDisplayAnswer = self.hangmanWordLabel.text
     if correctHangmanWord.contains(userGuess!) {
       correctLetters.append(userGuess!)
       print("Match Found")
       
-    // Turn answer into an array of characters
+      // Turn answer into an array of characters
       let answerArray = Array(correctHangmanWord.characters)
       var extraArray = Array(exampleDisplayAnswer!.characters)
       
-    // run the for loop that checks their character guess against each character in your answer, and saves the index of their guess into the correct letters array
+      // run the for loop that checks their character guess against each character in your answer, and saves the index of their guess into the correct letters array
       for char in 0...answerArray.count-1 {
         let newCharacter = String(answerArray[char])
         if userGuess == newCharacter {
@@ -117,25 +115,25 @@ class HangmanViewController: UIViewController {
           extraArray.insert(userGuess!.characters.first!, at: char)
         }
       }
-    // Turns extraArray into a string and put into guessedAnswerLabel
+      // Turns extraArray into a string and put into guessedAnswerLabel
       let newString = extraArray.map({"\($0)"}).joined(separator: "")
-        self.hangmanWordLabel.text = newString
-      } else {
+      self.hangmanWordLabel.text = newString
+    } else {
       updateGuessesLabels()
       self.incorrectLetters.append(userGuess!)
       self.incorrectGuessedLettersLabel.text = self.incorrectLetters.joined(separator: ",")
-      }
+    }
     let correctLettersArray = userCorrectLetters.joined(separator: "")
     print(correctLettersArray)
     if correctLettersArray == "\(correctHangmanWord.characters)" {
-        userWon()
-      }
+      userWon()
     }
-
+  }
+  
   func userLost() {
     userLostLabel.isHidden = false
   }
- 
+  
   func getRandomWord() -> String {
     let randomNumber = generateRandomNumber(number: UInt32(self.linkedInWords.count))
     return self.linkedInWords[randomNumber]
