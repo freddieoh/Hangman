@@ -88,6 +88,7 @@ class HangmanViewController: UIViewController {
   
   func userWon() {
     userWonLabel.isHidden = false
+    makeUserWinLabelCircular()
   }
   
   func checkUserLetter() {
@@ -131,6 +132,7 @@ class HangmanViewController: UIViewController {
   
   func userLost() {
     userLostLabel.isHidden = false
+    makeUserLoseLabelCircular()
   }
   
   func getRandomWord() -> String {
@@ -158,6 +160,16 @@ class HangmanViewController: UIViewController {
   func playGame() {
     self.correctHangmanWord = self.getRandomWord()
     self.hangmanWordLabel.text = self.displayDashesForWord()
+  }
+  
+  func makeUserWinLabelCircular() {
+    userWonLabel.layer.masksToBounds = true
+    userWonLabel.layer.cornerRadius = 45.0
+  }
+  
+  func makeUserLoseLabelCircular(){
+    userLostLabel.layer.masksToBounds = true
+    userLostLabel.layer.cornerRadius = 45.0
   }
   
   @IBAction func getNewWordButtonPressed(_ sender: Any) {
