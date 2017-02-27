@@ -78,7 +78,6 @@ class HangmanViewController: UIViewController {
     updateNumberOfGuesses()
     self.guessesRemainingLabel.text = "\(guessesRemaining)"
     self.incorrectGuessesLabel.text = "\(numberOfIncorrectGuesses)"
-    print("Match not found")
   }
   
   func userUsedAllGuesses() {
@@ -135,7 +134,7 @@ class HangmanViewController: UIViewController {
   }
   
   func getRandomWord() -> String {
-    let randomNumber = generateRandomNumber(number: UInt32(self.linkedInWords.count))
+    let randomNumber = generateRandomNumber(number: UInt32(self.linkedInWords.count)) 
     return self.linkedInWords[randomNumber]
   }
   
