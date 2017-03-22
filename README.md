@@ -31,7 +31,7 @@ From paper and pencil, to a mobile application. Hangman is a classic guessing ga
 
 
 
-#License
+# License
 LICENSE
 
 The MIT License (MIT)
